@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const gitHubApi = require('./githubApi');
+const githubApi = require('./githubApi');
 const app = express();
 const port = process.env.PORT || 5000;
 
