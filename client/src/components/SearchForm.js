@@ -1,8 +1,8 @@
 import React from 'react';
 
-class SearchBar extends React.Component {
+class SearchForm extends React.Component {
   state = {
-    name: '',
+    searchTerm: '',
   };
 
   handleInputChange = e => {
@@ -13,27 +13,26 @@ class SearchBar extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    if (this.state.name.trim()) {
-      this.props.onAddBookmark(this.state);
-      this.name = '';
+    if (this.state.searchTerm.trim()) {
+      this.props.onSearchRepository(this.state.searchTerm);
+      this.searchTerm = '';
     }
   };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className='searchForm'>
         <input
           type="text"
-          placeholder="title"
-          name="title"
+          placeholder="repository name"
+          name="searchTerm"
           onChange={this.handleInputChange}
-          value={this.state.name}
+          value={this.state.searchTerm}
         />
-        <hr />
         <button type="submit">Search</button>
       </form>
     );
   }
 }
 
-export default NewBookmark;
+export default SearchForm;

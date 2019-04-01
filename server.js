@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const api = require('./api');
+const gitHubApi = require('./githubApi');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.repositories = [];
 
 app.get('/api/repositories/search/:searchTerm', (req, res) => {
-  api(req.params.searchTerm)
+  githubApi(req.params.searchTerm)
   .then((rawRepositories)=>{
     let repository;
     app.repositories = [];

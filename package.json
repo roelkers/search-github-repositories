@@ -13,9 +13,11 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "express": "^4.16.4",
-    "mocha": "^6.0.2"
+    "mocha": "^6.0.2",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "concurrently": "^4.0.1"
+    "concurrently": "^4.0.1",
+    "react-test-renderer": "^16.8.6"
   }
 }

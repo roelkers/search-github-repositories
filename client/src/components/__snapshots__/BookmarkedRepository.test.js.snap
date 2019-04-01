@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookmarkedRepository should match the snapshot 1`] = `
+<div
+  className="repository"
+>
+  <h2>
+    test
+  </h2>
+  <p>
+    Id: 
+    1
+  </p>
+  <p>
+    Owner: 
+    test_owner
+  </p>
+  <p>
+    Forks: 
+    3
+  </p>
+  <p>
+    Stars: 
+    2
+  </p>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Remove Bookmark
+  </button>
+</div>
+`;

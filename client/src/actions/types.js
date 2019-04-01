@@ -1,2 +1,4 @@
 export const ADD_BOOKMARK = 'ADD_BOOKMARK';
 export const DELETE_BOOKMARK = 'DELETE_BOOKMARK';
+export const FETCH_REPOSITORIES = 'FETCH_REPOSITORIES';
+export const ERROR = 'ERROR';
