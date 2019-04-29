@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const gitHubApi = require('./githubApi');
+const githubApi = require('./githubApi');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -26,7 +26,6 @@ app.get('/api/repositories/search/:searchTerm', (req, res) => {
     res.send(app.repositories);
   })
   .catch((error)=>{
-    console.log(error);
     res.send("github repositories not available.");
   })
 });
