@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-module.exports = async function getRepositoriesFromApi(searchTerm) {
+module.exports.get = async function get(searchTerm) {
   return new Promise((resolve,reject)=>{
     axios.get(`https://api.github.com/search/repositories?q=${searchTerm}`)
     .then(function(response) {
@@ -10,5 +10,4 @@ module.exports = async function getRepositoriesFromApi(searchTerm) {
       reject(error);
     });
   })  
-  
-  }
+}

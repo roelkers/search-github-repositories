@@ -4,6 +4,8 @@ const expect = require('chai').expect;
 chai.use(require('chai-http'));
 
 const app = require('../server.js'); // Our app
+const sinon = require('sinon');
+const githubApi = require('../githubApi');
 
 function mockRepositories() {
     return [
@@ -32,16 +34,61 @@ function mockRepositories() {
     ];
 }
 
+function mockApi() {
+    return {
+    items: [
+        {
+            id: 1,
+            full_name: "appscape/ASDayPicker",
+            forks: 18,
+            stargazers_count: 129,
+            owner: {
+                login:"appscape"
+            }
+        },
+        {
+            id: 2,
+            full_name: "RxSwiftCommunity/RxASDataSources",
+            forks: 23,
+            stargazers_count: 80,
+            owner: {
+                login: "RxSwiftCommunity"
+            },
+            bookmark: true
+        },
+        {
+            id: 3,
+            full_name: "thecreation/jquery-asDatepicker",
+            forks: 8,
+            stargazers_count: 12,
+            owner:{
+                login: "thecreation"
+            }
+        }
+    ]
+}
+}
+
+
 describe('API endpoint GET /api/repositories/search/:searchTerm', function () {
 
     it('should return an array of repositories', function () {
-        const searchTerm = 'node.js';
+        const searchTerm = 'fffa';
+        const apiStub = sinon.stub(githubApi, 'get');
+        apiStub.returns(Promise.resolve(mockApi()));
+
         return chai.request(app)
             .get('/api/repositories/search/' + searchTerm)
             .then(function (res) {
                 expect(res).to.have.status(200);
                 expect(res).to.be.json;
                 expect(res.body).to.be.an('array');
+                expect(res.body[0]).has.property('id');
+                expect(res.body[0]).has.property('stars');
+                expect(res.body[0]).has.property('owner');
+                expect(res.body[0]).has.property('forks');
+                expect(res.body[0]).has.property('name');
+                apiStub.restore();
             });
     });
 });
@@ -107,3 +154,4 @@ describe('API endpoint DELETE /api/bookmarks', function () {
             })
     })
 });
+

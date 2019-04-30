@@ -5,7 +5,7 @@
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "test": "nyc mocha --timeout 5000 --exit"
+    "test": "mocha --exit"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -14,7 +14,8 @@
     "chai-http": "^4.2.1",
     "express": "^4.16.4",
     "mocha": "^6.0.2",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "sinon": "^7.3.2"
   },
   "devDependencies": {
     "concurrently": "^4.0.1",

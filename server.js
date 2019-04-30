@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.repositories = [];
 
 app.get('/api/repositories/search/:searchTerm', (req, res) => {
-  githubApi(req.params.searchTerm)
+  githubApi.get(req.params.searchTerm)
   .then((rawRepositories)=>{
     let repository;
     app.repositories = [];
