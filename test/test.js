@@ -34,7 +34,7 @@ function mockRepositories() {
     ];
 }
 
-function mockApi() {
+function mockGithubApi() {
     return {
     items: [
         {
@@ -75,7 +75,7 @@ describe('API endpoint GET /api/repositories/search/:searchTerm', function () {
     it('should return an array of repositories', function () {
         const searchTerm = 'fffa';
         const apiStub = sinon.stub(githubApi, 'get');
-        apiStub.returns(Promise.resolve(mockApi()));
+        apiStub.returns(Promise.resolve(mockGithubApi()));
 
         return chai.request(app)
             .get('/api/repositories/search/' + searchTerm)
