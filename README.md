@@ -23,7 +23,7 @@ yarn install
 ```
 
 ```
-yarn test
+yarn test --watchAll
 ```
 
 ### Run App
